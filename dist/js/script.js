@@ -1,35 +1,37 @@
 do {
     const question = prompt(`Выберите операцию:
     +, -, *, /, %, cos, sin, pow, H(history)`);
+    let sumOfNum;
+    let diffOfNum;
     let firstNumber;
     let secondNumber;
-    // let history;
-    // let historyArr;
+    let resList = [];
+    // let resSum;
     let firstArr = ["+", "-", "*", "/", "%"];
     let secondArr = ["cos", "sin"];
     let thirdArr = ["pow"];
 
 
         if (question == firstArr[0] || question == firstArr[1] || question == firstArr[2] || question == firstArr[3] || question == firstArr[4]) {
-            firstNumber = prompt('Введите первое число');
+            firstNumber = +prompt('Введите первое число');
             while (isNaN(firstNumber)) {  
                 firstNumber = +prompt('Введите корректное первое число:');
             }
-            secondNumber = prompt('Введите второе число');
+            secondNumber = +prompt('Введите второе число');
             while (isNaN(secondNumber)) {  
                 secondNumber = +prompt('Введите корректное второе число:');
             }
         } else if (question == secondArr[0] || question == secondArr[1]) {
-            firstNumber = prompt('Введите число');
+            firstNumber = +prompt('Введите число');
             while (isNaN(firstNumber)) {  
                 firstNumber = +prompt('Введите корректное число:');
             }
         } else if (question == thirdArr[0]) {
-            firstNumber = prompt('Введите число');
+            firstNumber = +prompt('Введите число');
             while (isNaN(firstNumber)) {  
                 firstNumber = +prompt('Введите корректное число:');
             }
-            secondNumber = prompt('Введите степень');
+            secondNumber = +prompt('Введите степень');
             while (isNaN(secondNumber)) {  
                 secondNumber = +prompt('Введите корректную степень:');
             }
@@ -42,16 +44,19 @@ do {
 
     switch(question) {
         case firstArr[0]:
-            const sumOfNum = +firstNumber + +secondNumber;
-            alert(`Sum:  ${firstNumber} + ${secondNumber}  = ${sumOfNum}`);
+            sumOfNum = +firstNumber + +secondNumber;
+            resSum = alert(`Sum:  ${firstNumber} + ${secondNumber}  = ${sumOfNum}`);
+            // resList.push(resSum, sumOfNum);
+            // console.log(resList);
             break;
         case firstArr[1]:
-            const diffOfNum = firstNumber - secondNumber;
+            diffOfNum = firstNumber - secondNumber;
             alert(`Diff: ${firstNumber} - ${secondNumber}  = ${diffOfNum}`);
             break;
         case firstArr[2]:
             const multOfNum = firstNumber * secondNumber;
             alert(`Multi: ${firstNumber} * ${secondNumber}  = ${multOfNum}`);
+            resList.push(multOfNum);
             break;
         case firstArr[3]:
             const divOfNum = firstNumber / secondNumber;
@@ -73,23 +78,19 @@ do {
             const powNum = Math.pow(firstNumber, secondNumber);
             alert(`Pow: = ${powNum}`); 
             break;
-        // case "H":
-        //     history = localStorage.getItem('operation');
-        //     alert(JSON.parse(history)); 
-        //     break;
         default:
             result = 'operation is undefined';
     };
 
+
     
+        // resList.push(resSum, );
+        // console.log(resList);
+    
+    
+        // if (question == "H") {
+        //     console.log(resList);
+        // }
 
 } while (confirm('Повторить расчёты?'));
-
-// historyArr = [`История операций: ${ansSum}`];
-
-// localStorage.setItem('operation', JSON.stringify(historyArr));
-
-
-
-// console.log(historyArr);
 
